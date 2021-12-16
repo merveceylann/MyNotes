@@ -19,14 +19,14 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-1 px-lg-2">
-            <a class="navbar-brand" href="#!">Notlarım - 102MC</a>
+            <a class="navbar-brand" href="/Home/Index">Notlarım - 102MC</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!"><i class="fas fa-wrench"></i> Yönetim</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!"><i class="far fa-star"></i> En Beğenilenler</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!"><i class="far fa-edit"></i> Son Yazılar</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!"><i class="fas fa-info-circle"></i> Hakkımızda</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/Home/MostLiked"><i class="far fa-star"></i> En Beğenilenler</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/Home/Index"><i class="far fa-edit"></i> Son Yazılar</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/Home/About"><i class="fas fa-info-circle"></i> Hakkımızda</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -67,27 +67,8 @@
         @* container-fluid *@
         <div class="row">
             <div class="col-md-2">
-                <p class="lead mt-5 fw-bolder">Kategoriler</p>
-                <div class="list-group">
-                    @* fixed-top *@
-                    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-                        <span> <i class="fas fa-angle-double-right"></i> </span>
-                        Tümü
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <span> <i class="fas fa-angle-double-right"></i> </span>
-                        Kategori - 1
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <span> <i class="fas fa-angle-double-right"></i> </span>
-                        Kategori - 2
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <span> <i class="fas fa-angle-double-right"></i> </span>
-                        Kategori - 3
-                    </a>
-                   
-                </div>
+                @* kategorileri kestik *@
+                @Html.Partial("_PartialCategories")
             </div>
             <div class="col-md-10">
                 @RenderBody()

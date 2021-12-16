@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Notlarim102.DataAccessLayer
+namespace Notlarim102.DataAccessLayer.EntityFramework
 {
     public class MyInitializer : CreateDatabaseIfNotExists<NotlarimContext>
     {

@@ -54,8 +54,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyInitializer.cs" />
-    <Compile Include="NotlarimContext.cs" />
+    <Compile Include="Abstrack\IRepository.cs" />
+    <Compile Include="EntityFramework\MyInitializer.cs" />
+    <Compile Include="EntityFramework\NotlarimContext.cs" />
+    <Compile Include="EntityFramework\RepositoryBase.cs" />
+    <Compile Include="EntityFramework\Repostory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
