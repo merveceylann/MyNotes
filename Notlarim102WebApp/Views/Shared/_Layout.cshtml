@@ -66,15 +66,15 @@
     <div class="container body-content"> 
         @* container-fluid *@
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-2" id="category1">
                 @* kategorileri kestik *@
                 @Html.Partial("_PartialCategories")
             </div>
-            <div class="col-md-10">
+            <div class="col-md-10" id="category2">
                 @RenderBody()
             </div>
         </div>
-        <hr />
+        
 
     </div>
     <!-- Footer-->
