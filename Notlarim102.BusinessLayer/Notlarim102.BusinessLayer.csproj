@@ -51,9 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLayerResult.cs" />
     <Compile Include="CategoryControl.cs" />
     <Compile Include="CategoryManager.cs" />
     <Compile Include="NoteManager.cs" />
+    <Compile Include="NotlarimUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test.cs" />
   </ItemGroup>

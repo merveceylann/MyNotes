@@ -1,6 +1,6 @@
 ﻿using Notlarim102.BusinessLayer;
 using Notlarim102.Entity;
-using Notlarim102WebApp.ViewModel;
+using Notlarim102.Entity.ValueObject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,6 +65,19 @@ namespace Notlarim102WebApp.Controllers
         [HttpPost]
         public ActionResult Login(LoginViewModel model)
         {
+            if (ModelState.IsValid)
+            {
+                NotlarimUserManager num = new NotlarimUserManager();
+                BusinessLayerResult<NotlarimUser> res = num.LoginUser(model);
+                if (res.Errors.Count > 0)
+                {
+                    res.Errors.ForEach(s => ModelState.AddModelError("", s));
+                    return View(model);
+                }
+                Session["login"] = res.Result; //sessiona kullanici bilgileri gonderme
+
+                return RedirectToAction("Index"); //yonlendirme
+            }
             return View();
         }
 
@@ -82,33 +95,55 @@ namespace Notlarim102WebApp.Controllers
             //bool hasError = false;
             if (ModelState.IsValid)
             {
-                //kontrol eder. yani modelden gelen yapi uygunsa
-                if (model.Username=="aaa")
+                NotlarimUserManager num = new NotlarimUserManager();
+
+                BusinessLayerResult<NotlarimUser> res = num.RegisterUser(model);
+
+                if (res.Errors.Count > 0)
                 {
-                    ModelState.AddModelError("","Bu kullanici adi uygun degil!");
-                    //hasError = true;
+                    res.Errors.ForEach(s => ModelState.AddModelError("", s));
+                    return View(model);
                 }
-                if (model.Email=="aaa@aaa.com")
-                {
-                    ModelState.AddModelError("", "Email adresi daha once kullanilmis. Baska bir email deneyin.");
-                    //hasError = true;
-                }
-                //if (hasError==true)
+
+
+                //NotlarimUser user = null;
+                //try
                 //{
-                //    return View(model);
+                //    user = num.RegisterUser(model);
                 //}
-                //else
+                //catch (Exception ex)
                 //{
-                //    return RedirectToAction("RegisterOk");
+                //    ModelState.AddModelError("", ex.Message);
                 //}
 
-                foreach (var item in ModelState)
-                {
-                    if (item.Value.Errors.Count>0)
-                    {
-                        return View(model);
-                    }
-                }
+                //kontrol eder. yani modelden gelen yapi uygunsa
+                //if (model.Username=="aaa")
+                //{
+                //    ModelState.AddModelError("","Bu kullanici adi uygun degil!");
+                //    //hasError = true;
+                //}
+                //if (model.Email=="aaa@aaa.com")
+                //{
+                //    ModelState.AddModelError("", "Email adresi daha once kullanilmis. Baska bir email deneyin.");
+                //    //hasError = true;
+                //}
+                ////if (hasError==true)
+                ////{
+                ////    return View(model);
+                ////}
+                ////else
+                ////{
+                ////    return RedirectToAction("RegisterOk");
+                ////}
+
+                //foreach (var item in ModelState)
+                //{
+                //    if (item.Value.Errors.Count > 0)
+                //    {
+                //        return View(model);
+                //    }
+                //}
+
                 return RedirectToAction("RegisterOk");
             }
 

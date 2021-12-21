@@ -49,6 +49,8 @@
     <Compile Include="Note.cs" />
     <Compile Include="NotlarimUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValueObject\LoginViewModel.cs" />
+    <Compile Include="ValueObject\RegisterViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

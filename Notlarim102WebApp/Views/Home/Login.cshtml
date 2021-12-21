@@ -1,17 +1,16 @@
-﻿@using Notlarim102WebApp.ViewModel
+﻿@using Notlarim102.Entity.ValueObject
 @model LoginViewModel
 @{
     ViewBag.Title = "Login";
 }
 
 <link href="~/Content/Login-RegisterStyle.css" rel="stylesheet" />
-
 @using (Html.BeginForm())
 {
     <div class="logred">
         <main class="form-signin">
             <form>
-                <img class="mb-4 rounded-circle" src="~~/images/loginIcon.png" alt="" width="144" height="148">
+                <img class="mb-4 rounded-circle" src="~/images/loginIcon.png" alt="" width="144" height="148">
                 <h1 class="h3 mb-3 fw-normal">Giriş Formu</h1>
                 @Html.ValidationSummary(false)
                 @* hata mesajlarini yazmak icin *@

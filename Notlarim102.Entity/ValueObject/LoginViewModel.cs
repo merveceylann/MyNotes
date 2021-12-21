@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Notlarim102WebApp.ViewModel
+namespace Notlarim102.Entity.ValueObject
 {
     public class LoginViewModel
     {
