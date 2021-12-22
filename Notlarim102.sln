@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notlarim102.BusinessLayer",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notlarim102.Entity", "Notlarim102.Entity\Notlarim102.Entity.csproj", "{0E88FE24-5CA6-4387-9801-8E69F32FF226}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notlarim102.Common", "Notlarim102.Common\Notlarim102.Common.csproj", "{19D6B0AA-489A-45F4-B6ED-DCA8A25A1669}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{0E88FE24-5CA6-4387-9801-8E69F32FF226}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E88FE24-5CA6-4387-9801-8E69F32FF226}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E88FE24-5CA6-4387-9801-8E69F32FF226}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19D6B0AA-489A-45F4-B6ED-DCA8A25A1669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19D6B0AA-489A-45F4-B6ED-DCA8A25A1669}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19D6B0AA-489A-45F4-B6ED-DCA8A25A1669}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19D6B0AA-489A-45F4-B6ED-DCA8A25A1669}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

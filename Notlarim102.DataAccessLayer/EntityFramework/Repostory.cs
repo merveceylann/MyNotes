@@ -1,5 +1,7 @@
-﻿using Notlarim102.DataAccessLayer;
+﻿using Notlarim102.Common;
+using Notlarim102.DataAccessLayer;
 using Notlarim102.DataAccessLayer.Abstrack;
+using Notlarim102.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Notlarim102.DataAccessLayer.EntityFramework
 {
-    public class Repostory<T>:RepositoryBase,IRepository<T> where T : class
+    public class Repostory<T> : RepositoryBase, IRepository<T> where T : class
     {
         //once miraz sonra interface
         //private NotlarimContext db = new NotlarimContext();
@@ -37,11 +39,27 @@ namespace Notlarim102.DataAccessLayer.EntityFramework
         public int Insert(T obj)
         {
             objSet.Add(obj);
+            //NotlarimUser user =new NotlarimUser(obj) olmadi
+            if (obj is MyEntityBase)
+            {
+                MyEntityBase o = obj as MyEntityBase;
+                DateTime now = DateTime.Now;
+                o.CreatdOn = now;
+                o.ModifiedOn = now;
+                o.ModifiedUserName = App.Common.GetCurrentUsername();
+                //  o.ModifiedUserName = "system";
+            }
             return Save();
         }
 
         public int Update(T obj)
         {
+            if (obj is MyEntityBase)
+            {
+                MyEntityBase o = obj as MyEntityBase;
+                o.ModifiedOn = DateTime.Now;
+                o.ModifiedUserName = App.Common.GetCurrentUsername();
+            }
             return Save();
         }
 

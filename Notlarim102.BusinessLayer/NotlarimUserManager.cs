@@ -1,5 +1,7 @@
-﻿using Notlarim102.DataAccessLayer.EntityFramework;
+﻿using Notlarim102.Common.Helper;
+using Notlarim102.DataAccessLayer.EntityFramework;
 using Notlarim102.Entity;
+using Notlarim102.Entity.Messages;
 using Notlarim102.Entity.ValueObject;
 using System;
 using System.Collections.Generic;
@@ -24,11 +26,11 @@ namespace Notlarim102.BusinessLayer
             {
                 if (user.Username == data.Username)
                 {
-                    layerResult.Errors.Add("Kullanici adi daha once kaydedilmis");
+                    layerResult.AddError(ErrorMessageCode.UsernameAlreadyExist,"Kullanici adi daha once kaydedilmis");
                 }
                 if (user.Email == data.Email) //else diyemeyiz cunku biri digerinin on kosulu degil
                 {
-                    layerResult.Errors.Add("Email daha once kullanilmis");
+                    layerResult.AddError(ErrorMessageCode.EmailAlreadyExist,"Email daha once kullanilmis");
                 }
 
                 //hata firlatma teknigini kullanabiliriz.
@@ -48,13 +50,20 @@ namespace Notlarim102.BusinessLayer
                     ActivateGuid = Guid.NewGuid(),
                     IsActive = false,
                     IsAdmin = false,
-                    ModifiedOn = now,
-                    CreatdOn = now,
-                    ModifiedUserName = "system",
+                    //kapatilanlar repositoryde otomatik eklencek sekilde duzenlenecektir
+                    //ModifiedOn = now,
+                    //CreatdOn = now,
+                    //ModifiedUserName = "system",
                 });
                 if (dbResult > 0)
                 {
                     layerResult.Result = ruser.Find(s => s.Email == data.Email && s.Username == data.Username);
+
+                    string siteUri = ConfigHelper.Get<string>("SiteRootUri");
+                    string activeUri = $"{siteUri}/Home/UserActivete/{layerResult.Result.ActivateGuid}";
+                    string body = $"Merhaba {layerResult.Result.Username};<br><br> Hesabinizi aktiflestirmek icin <a href='{activeUri}' target='_blank'> Tiklayiniz </a>.";
+                    MailHelper.SendMail(body, layerResult.Result.Email, "Notlarim102 hesap aktiflestirme");
+                        
                 }
             }
             return layerResult;
@@ -76,12 +85,34 @@ namespace Notlarim102.BusinessLayer
             {
                 if (!res.Result.IsActive) //varsayalani true oldugu icin false ise iceri girecek acemice == yapmadik :D
                 {
-                    res.Errors.Add("Kullanici aktiflestirilmemis. Lutfen mailinizi kontrol edin");
+                    res.AddError(ErrorMessageCode.UserIsNotActive,"Kullanici aktiflestirilmemis.");
+                    res.AddError(ErrorMessageCode.CheckYourEmail,"Lutfen mailinizi kontrol edin");
                 }
             }
             else
             {
-                res.Errors.Add("Kullanici adi ya da sifre yanlis");
+                res.AddError(ErrorMessageCode.UsernameOrPassWrong,"Kullanici adi ya da sifre yanlis");
+            }
+            return res;
+        }
+
+        public BusinessLayerResult<NotlarimUser> ActiveUser(Guid id)
+        {
+            BusinessLayerResult<NotlarimUser> res = new BusinessLayerResult<NotlarimUser>();
+            res.Result = ruser.Find(x => x.ActivateGuid == id);
+            if (res.Result!=null)
+            {
+                if (res.Result.IsActive)
+                {
+                    res.AddError(ErrorMessageCode.UserAlreadyActive, "Bu hesap daha once aktif edilmistir.");
+                    return res;
+                }
+                res.Result.IsActive = true;
+                ruser.Update(res.Result);
+            }
+            else
+            {
+                res.AddError(ErrorMessageCode.ActiveIdDoesNotExist, "Hatali islem!!!");
             }
             return res;
         }

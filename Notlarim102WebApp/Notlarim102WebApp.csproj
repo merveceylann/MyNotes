@@ -161,6 +161,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Init\WebCommon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +176,8 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\RegisterOk.cshtml" />
+    <Content Include="Views\Home\UserActiveteOk.cshtml" />
+    <Content Include="Views\Home\UserActiveteCancel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -192,6 +195,10 @@
     <ProjectReference Include="..\Notlarim102.BusinessLayer\Notlarim102.BusinessLayer.csproj">
       <Project>{80cdb84b-dec1-45c4-9fa3-f32dae66f28d}</Project>
       <Name>Notlarim102.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Notlarim102.Common\Notlarim102.Common.csproj">
+      <Project>{19d6b0aa-489a-45f4-b6ed-dca8a25a1669}</Project>
+      <Name>Notlarim102.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Notlarim102.Entity\Notlarim102.Entity.csproj">
       <Project>{0e88fe24-5ca6-4387-9801-8e69f32ff226}</Project>
