@@ -21,6 +21,8 @@ namespace Notlarim102.Entity
         public string Email { get; set; }
         [StringLength(100),Required]
         public string Password { get; set; }
+        [StringLength(30)]
+        public string ProfileImageFilename { get; set; }
         public bool IsActive { get; set; }
         [Required]
         public Guid ActivateGuid { get; set; } //globaluserid 16 haneli benzersiz bir kod cikariyor

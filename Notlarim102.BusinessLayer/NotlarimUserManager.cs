@@ -50,6 +50,7 @@ namespace Notlarim102.BusinessLayer
                     ActivateGuid = Guid.NewGuid(),
                     IsActive = false,
                     IsAdmin = false,
+                    ProfileImageFilename="user1.jpeg"
                     //kapatilanlar repositoryde otomatik eklencek sekilde duzenlenecektir
                     //ModifiedOn = now,
                     //CreatdOn = now,
@@ -113,6 +114,17 @@ namespace Notlarim102.BusinessLayer
             else
             {
                 res.AddError(ErrorMessageCode.ActiveIdDoesNotExist, "Hatali islem!!!");
+            }
+            return res;
+        }
+
+        public BusinessLayerResult<NotlarimUser> GetUserById(int id)
+        {
+            BusinessLayerResult<NotlarimUser> res = new BusinessLayerResult<NotlarimUser>();
+            res.Result = ruser.Find(s => s.Id == id);
+            if (res.Result==null)
+            {
+                res.AddError(ErrorMessageCode.UserNotFound, "Kullanici bulunamadi.");
             }
             return res;
         }

@@ -2,6 +2,7 @@
 using Notlarim102.Entity;
 using Notlarim102.Entity.Messages;
 using Notlarim102.Entity.ValueObject;
+using Notlarim102WebApp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -148,8 +149,13 @@ namespace Notlarim102WebApp.Controllers
                 //        return View(model);
                 //    }
                 //}
-
-                return RedirectToAction("RegisterOk");
+                OkViewModel notifiyObj = new OkViewModel()
+                {
+                    Title = "Kayit Basarili",
+                    RedirectingUrl="/Home/Login"                    
+                };
+                notifiyObj.Items.Add("Lutfen e-posta adresinize gonderilen aktivasyon linkine tiklayarak hesabinizi aktif edin. Hesabinizi aktif etmeden not ekleyemez ve begenme yapamazsınız.");
+                return View("Ok",notifiyObj);
             }
 
             return View(model);
@@ -165,10 +171,24 @@ namespace Notlarim102WebApp.Controllers
             BusinessLayerResult<NotlarimUser> res = num.ActiveUser(id);
             if (res.Errors.Count > 0)
             {
-                TempData["errors"] = res.Errors;
-                return RedirectToAction("UserActiveteCancel");
+                ErrorViewModel errorNotifiyObj = new ErrorViewModel()
+                {
+                    Title = "Gecersiz Aktivasyon Islemi",
+                    Items = res.Errors
+                };
+                return View("Error", errorNotifiyObj);
             }
-            return RedirectToAction("UserActiveteOk");
+
+            OkViewModel notifiyObj = new OkViewModel()
+            {
+                Title = "Hesap Aktiflestirildi.",
+                RedirectingUrl = "/Home/Login"
+            };
+            notifiyObj.Items.Add("Hesabiniz aktiflestirildi. Artik not paylasimi yapabilirsiniz.");
+            return View("Ok", notifiyObj);
+            //return RedirectToAction("UserActiveteOk");
+
+
         }
 
         public ActionResult UserActiveteOk()
@@ -178,11 +198,56 @@ namespace Notlarim102WebApp.Controllers
         public ActionResult UserActiveteCancel()
         {
             List<ErrorMessageObject> errors = null;
-            if (TempData["errors"]!=null)
+            if (TempData["errors"] != null)
             {
                 errors = TempData["errors"] as List<ErrorMessageObject>;
             }
             return View(errors);
+        }
+
+        public ActionResult ShowProfile()
+        {
+            NotlarimUser currentUser = Session["login"] as NotlarimUser;
+            NotlarimUserManager num = new NotlarimUserManager();
+            BusinessLayerResult<NotlarimUser> res = num.GetUserById(currentUser.Id);
+            if (res.Errors.Count>0)
+            {
+                ErrorViewModel errorNotifiyObj = new ErrorViewModel()
+                {
+                    Title = "Gecersiz Profile Islemi",
+                    Items = res.Errors
+                };
+                return View("Error", errorNotifiyObj);
+            }
+            return View(res.Result);
+        }
+
+        public ActionResult EditProfile()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EditProfile(int id)
+        {
+            return View();
+        }
+
+        public ActionResult DeleteProfile()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteProfile(int id)
+        {
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Index");
         }
     }
 }

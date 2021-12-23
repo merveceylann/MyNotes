@@ -32,7 +32,7 @@ namespace Notlarim102.Common.Helper
                 message.IsBodyHtml = isHtml;
                 using (var smpt = new SmtpClient(ConfigHelper.Get<string>("MailHost"), ConfigHelper.Get<int>("MailPort")))
                 {
-                    smpt.EnableSsl = true;
+                    smpt.EnableSsl = true; //mail guvenligini sagliyor
                     smpt.Credentials = new NetworkCredential(ConfigHelper.Get<string>("MailUser"),
                                                            ConfigHelper.Get<string>("MailPass"));
                     smpt.Send(message);

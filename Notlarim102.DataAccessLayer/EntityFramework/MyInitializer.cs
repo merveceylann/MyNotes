@@ -23,6 +23,7 @@ namespace Notlarim102.DataAccessLayer.EntityFramework
                 IsAdmin = true,
                 Username = "merveotesi",
                 Password = "1234",
+                ProfileImageFilename = "user1.jpeg",
                 CreatdOn = DateTime.Now,
                 ModifiedOn = DateTime.Now,
                 ModifiedUserName = "merveotesi"
@@ -38,6 +39,7 @@ namespace Notlarim102.DataAccessLayer.EntityFramework
                 IsAdmin = false,
                 Username = "busrakoc",
                 Password = "12345",
+                ProfileImageFilename = "user1.jpeg",
                 CreatdOn = DateTime.Now.AddHours(1),
                 ModifiedOn = DateTime.Now.AddMinutes(65),
                 ModifiedUserName = "merveotesi"
@@ -57,6 +59,7 @@ namespace Notlarim102.DataAccessLayer.EntityFramework
                     IsAdmin = false,
                     Username = $"user-{i}",
                     Password = "123",
+                    ProfileImageFilename = "user1.jpeg",
                     CreatdOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
                     ModifiedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
                     ModifiedUserName = $"user-{i}"
