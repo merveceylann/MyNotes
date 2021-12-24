@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -9,17 +10,17 @@ using System.Threading.Tasks;
 namespace Notlarim102.Entity
 {
     [Table("tblNotlarimUsers")]
-    public class NotlarimUser:MyEntityBase
+    public class NotlarimUser : MyEntityBase
     {
-        [StringLength(30)]
+        [DisplayName("Ad"), StringLength(30, ErrorMessage = "{0} max. {1} karakter olmali.")]
         public string Name { get; set; }
-        [StringLength(30)]
+        [DisplayName("Soyad"), StringLength(30, ErrorMessage = "{0} max. {1} karakter olmali.")]
         public string Surname { get; set; }
-        [StringLength(30)]
+        [DisplayName("Kullanici Adi"), StringLength(30, ErrorMessage = "{0} max. {1} karakter olmali."), Required(ErrorMessage = "{0} alani gereklidir.")]
         public string Username { get; set; }
-        [StringLength(100),Required]
+        [DisplayName("E-Posta"), StringLength(100, ErrorMessage = "{0} max. {1} karakter olmali."), Required(ErrorMessage = "{0} alani gereklidir.")]
         public string Email { get; set; }
-        [StringLength(100),Required]
+        [DisplayName("Sifre"), StringLength(100, ErrorMessage = "{0} max. {1} karakter olmali."), Required(ErrorMessage = "{0} alani gereklidir.")]
         public string Password { get; set; }
         [StringLength(30)]
         public string ProfileImageFilename { get; set; }

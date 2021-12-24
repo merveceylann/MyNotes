@@ -113,11 +113,15 @@
     <Content Include="Content\Login-RegisterStyle.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\styles.css" />
+    <Content Include="Content\ValidationStyle.css" />
     <Content Include="Global.asax" />
+    <Content Include="images\2794683.png" />
     <Content Include="images\images.jpg" />
     <Content Include="images\Jake_Peralta_render_promo.jpg" />
     <Content Include="images\loginIcon.png" />
     <Content Include="images\user1.jpeg" />
+    <Content Include="images\user_1.jpeg" />
+    <Content Include="images\user_2.jpeg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -189,6 +193,7 @@
     <Content Include="Views\Shared\Info.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Home\ShowProfile.cshtml" />
+    <Content Include="Views\Home\EditProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
