@@ -8,6 +8,6 @@ namespace Notlarim102WebApp.ViewModel
 {
     public class ErrorViewModel:NotifyViewModelBase<ErrorMessageObject>
     {
-
+        
     }
 }

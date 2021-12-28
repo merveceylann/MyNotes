@@ -1,6 +1,6 @@
 ﻿using Notlarim102.Common;
+using Notlarim102.Core.DataAccess;
 using Notlarim102.DataAccessLayer;
-using Notlarim102.DataAccessLayer.Abstrack;
 using Notlarim102.Entity;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Notlarim102.DataAccessLayer.EntityFramework
 {
-    public class Repostory<T> : RepositoryBase, IRepository<T> where T : class
+    public class Repostory<T> : RepositoryBase, IDataAccess<T> where T : class
     {
         //once miraz sonra interface
         //private NotlarimContext db = new NotlarimContext();
@@ -89,7 +89,7 @@ namespace Notlarim102.DataAccessLayer.EntityFramework
             return objSet.FirstOrDefault(eresult);
         }
 
-        public IQueryable<T> listQueryable()
+        public IQueryable<T> QList()
         {
             return objSet.AsQueryable<T>();
         }

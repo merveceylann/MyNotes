@@ -20,7 +20,7 @@ namespace Notlarim102WebApp.ViewModel
             Title = "Gecersiz Islem";
             IsRedirecting = true;
             RedirectingUrl = "/Home/Index";
-            RedirectingTimeout = 10000;
+            RedirectingTimeout = 3000;
             Items = new List<T>();
         }
     }

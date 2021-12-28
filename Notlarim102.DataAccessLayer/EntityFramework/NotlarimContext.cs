@@ -23,6 +23,23 @@ namespace Notlarim102.DataAccessLayer.EntityFramework
             modelBuilder.Entity<Note>().MapToStoredProcedures();
             modelBuilder.Entity<Comment>().MapToStoredProcedures();
             modelBuilder.Entity<Liked>().MapToStoredProcedures();
+
+            //fluetn api
+
+            modelBuilder.Entity<Category>()
+               .HasMany(n => n.Notes)
+               .WithRequired(n => n.Category)
+               .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<Note>()
+                .HasMany(n => n.Comments)
+                .WithRequired(n => n.Note)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<Note>()
+               .HasMany(n => n.Likes)
+               .WithRequired(n => n.Note)
+               .WillCascadeOnDelete(true);
         }
 
         //yapici metodu aktif ediyoruz. yonlendirdik neyi calistircagini

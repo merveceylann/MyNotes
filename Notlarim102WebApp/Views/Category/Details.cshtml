@@ -1,0 +1,61 @@
+﻿@model Notlarim102.Entity.Category
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<br />
+<h2>Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatdOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatdOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedUserName)
+        </dd>
+
+    </dl>
+</div>
+
+<br />
+<a href="/Category/Edit/@Model.Id" class="btn btn-primary"> <i class="far fa-edit"></i> Edit</a>
+<br />
+<br />
+    @Html.ActionLink(" Back to List", "Index", null, new { @class = "btn btn-outline-dark bi bi-skip-backward-fill" })
+<br />

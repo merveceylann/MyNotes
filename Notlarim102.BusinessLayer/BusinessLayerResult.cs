@@ -23,7 +23,7 @@ namespace Notlarim102.BusinessLayer
         public void AddError(ErrorMessageCode code, string message)
         {
             //Errors.Add(new KeyValuePair<ErrorMessageCode, string>(code, message));
-            Errors.Add(new ErrorMessageObject { Code = code, Message = message });
+            Errors.Add(new ErrorMessageObject { Code =code,Message =message});
         }
     }
 }

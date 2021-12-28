@@ -1,0 +1,67 @@
+﻿@model Notlarim102.Entity.Category
+
+@{
+    ViewBag.Title = "Delete";
+}
+<br />
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Category</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatdOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatdOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedUserName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-danger" /> 
+            <br />
+            <br />
+            @Html.ActionLink(" Listeye Dön", "Index",null, new { @class = "btn btn-outline-dark bi bi-skip-backward-fill" })
+        </div>
+    }
+</div>
+<br />

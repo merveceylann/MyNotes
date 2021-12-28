@@ -51,9 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstrack\ManagerBase.cs" />
     <Compile Include="BusinessLayerResult.cs" />
     <Compile Include="CategoryControl.cs" />
     <Compile Include="CategoryManager.cs" />
+    <Compile Include="CommentManager.cs" />
+    <Compile Include="LikedManager.cs" />
     <Compile Include="NoteManager.cs" />
     <Compile Include="NotlarimUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,6 +70,10 @@
     <ProjectReference Include="..\Notlarim102.Common\Notlarim102.Common.csproj">
       <Project>{19d6b0aa-489a-45f4-b6ed-dca8a25a1669}</Project>
       <Name>Notlarim102.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Notlarim102.Core\Notlarim102.Core.csproj">
+      <Project>{47f830c1-0e71-48fa-8b01-c8bd6db47898}</Project>
+      <Name>Notlarim102.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Notlarim102.DataAccessLayer\Notlarim102.DataAccessLayer.csproj">
       <Project>{a4027081-4d0c-4451-a234-e495e4884238}</Project>

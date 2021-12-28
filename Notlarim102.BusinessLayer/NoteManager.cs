@@ -1,4 +1,5 @@
-﻿using Notlarim102.DataAccessLayer.EntityFramework;
+﻿using Notlarim102.BusinessLayer.Abstrack;
+using Notlarim102.DataAccessLayer.EntityFramework;
 using Notlarim102.Entity;
 using System;
 using System.Collections.Generic;
@@ -8,18 +9,18 @@ using System.Threading.Tasks;
 
 namespace Notlarim102.BusinessLayer
 {
-     public class NoteManager
+     public class NoteManager:ManagerBase<Note>
     {
-        private Repostory<Note> rnote = new Repostory<Note>();
+        //private Repostory<Note> rnote = new Repostory<Note>();
 
-        public List<Note> GetAllNotes()
-        {
-            return rnote.List();
-        }
+        //public List<Note> GetAllNotes()
+        //{
+        //    return rnote.List();
+        //}
 
-        public IQueryable<Note> GetAllNoteQueryable()
-        {
-            return rnote.listQueryable();
-        }
+        //public IQueryable<Note> GetAllNoteQueryable()
+        //{
+        //    return rnote.listQueryable();
+        //}
     }
 }

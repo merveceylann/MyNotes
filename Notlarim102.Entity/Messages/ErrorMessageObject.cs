@@ -10,5 +10,6 @@ namespace Notlarim102.Entity.Messages
     {
         public ErrorMessageCode Code { get; set; }
         public string Message { get; set; }
+       
     }
 }

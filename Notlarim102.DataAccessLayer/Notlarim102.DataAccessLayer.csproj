@@ -54,7 +54,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstrack\IRepository.cs" />
     <Compile Include="EntityFramework\MyInitializer.cs" />
     <Compile Include="EntityFramework\NotlarimContext.cs" />
     <Compile Include="EntityFramework\RepositoryBase.cs" />
@@ -70,10 +69,17 @@
       <Project>{19d6b0aa-489a-45f4-b6ed-dca8a25a1669}</Project>
       <Name>Notlarim102.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Notlarim102.Core\Notlarim102.Core.csproj">
+      <Project>{47f830c1-0e71-48fa-8b01-c8bd6db47898}</Project>
+      <Name>Notlarim102.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Notlarim102.Entity\Notlarim102.Entity.csproj">
       <Project>{0e88fe24-5ca6-4387-9801-8e69f32ff226}</Project>
       <Name>Notlarim102.Entity</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Abstrack\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
