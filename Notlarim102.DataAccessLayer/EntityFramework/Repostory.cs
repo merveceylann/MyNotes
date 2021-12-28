@@ -14,7 +14,7 @@ namespace Notlarim102.DataAccessLayer.EntityFramework
 {
     public class Repostory<T> : RepositoryBase, IDataAccess<T> where T : class
     {
-        //once miraz sonra interface
+        //once miras sonra interface
         //private NotlarimContext db = new NotlarimContext();
         private NotlarimContext db;
         private DbSet<T> objSet;

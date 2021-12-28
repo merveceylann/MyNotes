@@ -12,7 +12,7 @@ namespace Notlarim102.BusinessLayer.Abstrack
     public abstract class ManagerBase<T> : IDataAccess<T> where T : class //generic bir soyut ve idataaccessten implemente edilebilcek
     {
         //araci
-        //butun oucliclerin yanina virtual ekledik. yeri geldiginde ezebilmek icin
+        //butun pucliclerin yanina virtual ekledik. yeri geldiginde ezebilmek icin
         Repostory<T> repo = new Repostory<T>();
 
         public virtual int Delete(T obj)
