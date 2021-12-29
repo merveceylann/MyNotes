@@ -12,7 +12,7 @@ namespace Notlarim102.Entity
     [Table("tblCategories")]
     public class Category : MyEntityBase
     {
-        [DisplayName("Başlık"),StringLength(50), Required]
+        [DisplayName("Kategori Başlık"),StringLength(50), Required]
         public string Title { get; set; }
         [DisplayName("Açıklama"), StringLength(150)]
         public string Description { get; set; }

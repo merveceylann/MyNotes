@@ -13,11 +13,11 @@ namespace Notlarim102.Entity
     {
         [Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [DisplayName("Oluşturulma Tarihi"), Required]
+        [DisplayName("Oluşturulma Tarihi"), Required, ScaffoldColumn(false)]
         public DateTime CreatdOn { get; set; }
-        [DisplayName("Düzenlenme Tarihi"), Required]
+        [DisplayName("Düzenlenme Tarihi"), Required, ScaffoldColumn(false)]
         public DateTime ModifiedOn { get; set; }
-        [DisplayName("Düzenleyen Kullanıcı"), Required, StringLength(30)]
+        [DisplayName("Düzenleyen"), Required, StringLength(30), ScaffoldColumn(false)]
         public string ModifiedUserName { get; set; }
     }
 }

@@ -54,15 +54,18 @@
                 @Html.ValidationMessageFor(model => model.ModifiedUserName, "", new { @class = "text-danger" })
             </div>
         </div>*@
-
+    <br />
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Olustur" class="btn btn-default" />
+                @*<input type="submit" value="Olustur" class="btn btn-default" />*@
+                @Bootstrap.LinkButton("/Category/Create/", "success", string.Empty, "Yeni Kayit", "bi bi-plus-lg", " Olustur")
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <br />
+    @*@Html.ActionLink(" Listeye Dön", "Index", null, new { @class = "btn btn-outline-dark bi bi-skip-backward-fill" })*@
+    @Bootstrap.LinkButton("/Category/Index/", "outline-dark", string.Empty, "Yeni Kayit", "bi bi-skip-backward-fill", " Listeye Don")
 </div>

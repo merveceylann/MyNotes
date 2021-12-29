@@ -22,10 +22,10 @@ namespace Notlarim102.Entity
         public string Email { get; set; }
         [DisplayName("Sifre"), StringLength(100, ErrorMessage = "{0} max. {1} karakter olmali."), Required(ErrorMessage = "{0} alani gereklidir.")]
         public string Password { get; set; }
-        [StringLength(30)]
+        [StringLength(30), ScaffoldColumn(false)]
         public string ProfileImageFilename { get; set; }
         public bool IsActive { get; set; }
-        [Required]
+        [Required, ScaffoldColumn(false)]
         public Guid ActivateGuid { get; set; } //globaluserid 16 haneli benzersiz bir kod cikariyor
         public bool IsAdmin { get; set; }
 
