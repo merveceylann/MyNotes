@@ -19,6 +19,7 @@ namespace Notlarim102.Entity
         public int LikeCount { get; set; }
 
         public int CategoryId { get; set; }
+        public int? OwnerId { get; set; }
 
         public virtual NotlarimUser Owner { get; set; }
         public virtual Category Category { get; set; } 

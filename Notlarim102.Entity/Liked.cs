@@ -19,6 +19,10 @@ namespace Notlarim102.Entity
         //public int NoteId { get; set; }
         //public int NotlarimUserId { get; set; }
 
+        //[ForeingKey]
+        public int NoteId { get; set; }
+        public int? LikedUserId { get; set; }
+
         public virtual Note Note { get; set; }
         public virtual NotlarimUser LikedUser { get; set; } //basina virtual koyuyoruz ki burada idleri olussun
 

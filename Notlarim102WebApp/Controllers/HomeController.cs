@@ -2,6 +2,7 @@
 using Notlarim102.Entity;
 using Notlarim102.Entity.Messages;
 using Notlarim102.Entity.ValueObject;
+using Notlarim102WebApp.Models;
 using Notlarim102WebApp.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -91,8 +92,9 @@ namespace Notlarim102WebApp.Controllers
                     res.Errors.ForEach(s => ModelState.AddModelError("", s.Message));
                     return View();
                 }
-                Session["login"] = res.Result; //sessiona kullanici bilgileri gonderme
+                //Session["login"] = res.Result; //sessiona kullanici bilgileri gonderme
 
+                CurrentSession.Set("login", res.Result);
                 return RedirectToAction("Index"); //yonlendirme
             }
             return View();
@@ -226,7 +228,8 @@ namespace Notlarim102WebApp.Controllers
             //NotlarimUser currentUser = Session["login"] as NotlarimUser;
             //if (currentUser != null) res = num.GetUserById(currentUser.Id);
 
-            if (Session["login"] is NotlarimUser currentUser) res = num.GetUserById(currentUser.Id);
+            //if (Session["login"] is NotlarimUser currentUser) res = num.GetUserById(currentUser.Id);
+            if (CurrentSession.User is NotlarimUser currentUser) res = num.GetUserById(currentUser.Id);
             //tek satira indi
             
             if (res.Errors.Count > 0)
@@ -248,7 +251,7 @@ namespace Notlarim102WebApp.Controllers
             //BusinessLayerResult<NotlarimUser> res = num.GetUserById(currentUser.Id);
             // res = num.GetUserById(currentUser.Id);
 
-            if (Session["login"] is NotlarimUser currentUser) res = num.GetUserById(currentUser.Id);
+            if (CurrentSession.User is NotlarimUser currentUser) res = num.GetUserById(currentUser.Id);
 
             if (res.Errors.Count > 0)
             {
@@ -287,7 +290,8 @@ namespace Notlarim102WebApp.Controllers
                     };
                     return View("Error", errorNotifyObj);
                 }
-                Session["login"] = res.Result;
+                //Session["login"] = res.Result;
+                CurrentSession.Set("login", res.Result);
                 return RedirectToAction("ShowProfile");
             }
             return View(model);
@@ -300,7 +304,7 @@ namespace Notlarim102WebApp.Controllers
             //BusinessLayerResult<NotlarimUser> res = num.DeleteProfile(currentUser.Id);
             //res = num.DeleteProfile(currentUser.Id);
 
-            if (Session["login"] is NotlarimUser currentUser) res = num.GetUserById(currentUser.Id);
+            if (CurrentSession.User is NotlarimUser currentUser) res = num.GetUserById(currentUser.Id);
 
             if (res.Errors.Count > 0)
             {
@@ -311,7 +315,8 @@ namespace Notlarim102WebApp.Controllers
                 };
                 return View("Error", errorNotifyObj);
             }
-            Session.Clear();
+            //Session.Clear();
+            CurrentSession.Clear();
             return RedirectToAction("Index");
         }
 
@@ -323,7 +328,8 @@ namespace Notlarim102WebApp.Controllers
 
         public ActionResult Logout()
         {
-            Session.Clear();
+            //Session.Clear();
+            CurrentSession.Clear();
             return RedirectToAction("Index");
         }
     }

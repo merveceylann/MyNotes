@@ -1,4 +1,5 @@
 ﻿@using Notlarim102.Entity
+@using Notlarim102WebApp.Models
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -19,13 +20,12 @@
 <body>
     @{
         NotlarimUser user = null;
-        if (Session["login"] != null)
+        if (CurrentSession.User != null)
         {
-            user = Session["login"] as NotlarimUser;
+            user = CurrentSession.User as NotlarimUser;
         }
 
     }
-
 
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">

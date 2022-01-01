@@ -1,8 +1,9 @@
 ﻿@using Notlarim102.BusinessLayer
 @using Notlarim102.Entity
+@using Notlarim102WebApp.Models
 @{
     CategoryManager cm = new CategoryManager();
-    List<Category> list = cm.List();
+    List<Category> list = CacheHelper.GetCategoriesFromCache();
 }
 <p class="lead mt-5 fw-bolder">Kategoriler</p>
 <div class="list-group">

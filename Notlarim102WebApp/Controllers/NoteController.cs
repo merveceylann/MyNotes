@@ -22,7 +22,7 @@ namespace Notlarim102WebApp.Controllers
         {
             //var notes1 = db.Notes.Include(n => n.Category);
 
-            var user = HttpContext.Session["login"] as NotlarimUser;
+            //var user = HttpContext.Session["login"] as NotlarimUser;
 
             //var notes = nm.QList().Include("Category").Include("Owner").Where(s => s.Owner.Id == user.Id);
             var notes = nm.QList().Include("Category").Include("Owner").Where(s => s.Owner.Id == CurrentSession.User.Id).OrderByDescending(s => s.ModifiedOn);
@@ -53,7 +53,7 @@ namespace Notlarim102WebApp.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(cm.List(), "Id", "Title");
+            ViewBag.CategoryId = new SelectList(CacheHelper.GetCategoriesFromCache(), "Id", "Title");
             return View();
         }
 
@@ -71,7 +71,7 @@ namespace Notlarim102WebApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryId = new SelectList(cm.List(), "Id", "Title", note.CategoryId);
+            ViewBag.CategoryId = new SelectList(CacheHelper.GetCategoriesFromCache(), "Id", "Title", note.CategoryId);
             return View(note);
         }
 
@@ -86,7 +86,7 @@ namespace Notlarim102WebApp.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryId = new SelectList(cm.List(), "Id", "Title", note.CategoryId);
+            ViewBag.CategoryId = new SelectList(CacheHelper.GetCategoriesFromCache(), "Id", "Title", note.CategoryId);
             return View(note);
         }
 
@@ -107,7 +107,7 @@ namespace Notlarim102WebApp.Controllers
                 nm.Update(dbNote);
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(cm.List(), "Id", "Title", note.CategoryId);
+            ViewBag.CategoryId = new SelectList(CacheHelper.GetCategoriesFromCache(), "Id", "Title", note.CategoryId);
             return View(note);
         }
 

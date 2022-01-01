@@ -14,6 +14,11 @@ namespace Notlarim102.Entity
         [StringLength(3000), Required]
         public string Text { get; set; }
 
+        //[ForeignKey("Note")]
+        public int NoteId { get; set; } //otomaatik cascade 
+        //[ForeignKey("Owner")]
+        public int? OwnerId { get; set; }
+
         public virtual Note Note { get; set; } //bir notun bir yorumu olur
         public virtual NotlarimUser Owner { get; set; } //bir yorumun bir sahibi olur
     }
